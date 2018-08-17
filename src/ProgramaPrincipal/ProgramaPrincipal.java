@@ -1,11 +1,13 @@
 package ProgramaPrincipal;
 
+// Se importa paquete
 import NumerosPrimosEntre0y10.NumerosPrimosEntre0y10;
 
 
 public class ProgramaPrincipal {
     public static void main(String[] args){
         NumerosPrimosEntre0y10 numeros = new NumerosPrimosEntre0y10();
+        // Se muestra por consola los calculos realizados
         System.out.println("Operacion Uno");
         System.out.println(numeros.numerosPrimos());
         System.out.println("------------------------------------");

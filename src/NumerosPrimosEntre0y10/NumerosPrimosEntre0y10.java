@@ -3,12 +3,14 @@ package NumerosPrimosEntre0y10;
 
 public class NumerosPrimosEntre0y10 {
     
+    // Variables de Clase
     int numeroPrimoDos = 2;
     int numeroPrimoTres = 3;
     int numeroPrimoCinco = 5;
     int numeroPrimoSiete = 7;
-    private float sumaDePrimos = numeroPrimoDos + numeroPrimoTres + numeroPrimoCinco + numeroPrimoSiete;;
-    
+    float sumaDePrimos = numeroPrimoDos + numeroPrimoTres + numeroPrimoCinco + numeroPrimoSiete;
+  
+  // Metodos
   public float numerosPrimos(){
     
     return(sumaDePrimos);
