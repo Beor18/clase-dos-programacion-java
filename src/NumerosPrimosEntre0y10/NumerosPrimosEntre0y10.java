@@ -8,11 +8,10 @@ public class NumerosPrimosEntre0y10 {
     int numeroPrimoTres = 3;
     int numeroPrimoCinco = 5;
     int numeroPrimoSiete = 7;
-    float sumaDePrimos = numeroPrimoDos + numeroPrimoTres + numeroPrimoCinco + numeroPrimoSiete;
   
   // Metodos
   public float numerosPrimos(){
-    
+    float sumaDePrimos = numeroPrimoDos + numeroPrimoTres + numeroPrimoCinco + numeroPrimoSiete;
     return(sumaDePrimos);
     
   
@@ -27,7 +26,7 @@ public class NumerosPrimosEntre0y10 {
   
   public float promedioPrimos(){
   
-      float promedioDePrimos = sumaDePrimos / 4f;
+      float promedioDePrimos = numerosPrimos() / 4f;
       return(promedioDePrimos);
   
   }
