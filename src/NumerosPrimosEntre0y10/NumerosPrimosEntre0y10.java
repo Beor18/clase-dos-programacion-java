@@ -12,7 +12,7 @@ public class NumerosPrimosEntre0y10 {
   // Metodos
   public float numerosPrimos(){
     float sumaDePrimos = numeroPrimoDos + numeroPrimoTres + numeroPrimoCinco + numeroPrimoSiete;
-    return(sumaDePrimos);
+    return sumaDePrimos;
     
   
   }
@@ -20,14 +20,14 @@ public class NumerosPrimosEntre0y10 {
   public float multiplicarPrimo(){
   
     float multiplicacionDePrimos = numeroPrimoDos * numeroPrimoTres * numeroPrimoCinco * numeroPrimoSiete;
-    return (multiplicacionDePrimos);
+    return multiplicacionDePrimos;
   
   }
   
   public float promedioPrimos(){
   
       float promedioDePrimos = numerosPrimos() / 4f;
-      return(promedioDePrimos);
+      return promedioDePrimos;
   
   }
     
