@@ -19,7 +19,7 @@ public class CalculosMatematicos {
     
 // Multiplicacion
   public static float multiplicarPrimos(int... numeros){
-    int multiplicar = 1;
+    float multiplicar = 1;
         
     for (int i = 0; i < numeros.length; i++) {
             multiplicar = numeros[i] * multiplicar;
