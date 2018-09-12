@@ -2,6 +2,8 @@ package main;
 
 import clases.abstractas.TipoDeHelado;
 import clases.hijas.Cucurucho;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Completarlo con nombre de Alumno
@@ -26,12 +28,14 @@ public class ProgramaPrincipal {
          * la variable cantidadDeGustos), un precio de $40 (dato sacado de precio) 
          * y esta bañado en chocolate (una característica booleana solo precente en los cucuruchos)"
          *********************************************************************************************/
+        List<String> gustos = new ArrayList<>();
+        gustos.add("Frutilla");
+        gustos.add("Chocolate");
         
-        TipoDeHelado cucurucho = new Cucurucho(2, 40f);
+        TipoDeHelado cucurucho = new Cucurucho(40f, gustos);
         System.out.println(cucurucho.describirHelado());
         
         //Hacer lo mismo con los otros tipos de helado faltantes de diseñar.
-        
         
         
         
