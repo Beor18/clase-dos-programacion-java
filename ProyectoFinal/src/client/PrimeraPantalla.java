@@ -27,6 +27,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jRadioButton1 = new javax.swing.JRadioButton();
@@ -59,6 +60,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de Helado"));
 
+        buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("Vasito");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,6 +68,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(jRadioButton4);
         jRadioButton4.setText("1/2 Kilo");
         jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +76,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Cucurucho");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +84,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(jRadioButton5);
         jRadioButton5.setText("1 Kilo");
         jRadioButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +94,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
 
         jLabel4.setText("Pote:");
 
+        buttonGroup1.add(jRadioButton3);
         jRadioButton3.setText("1/4 Kilo");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -130,6 +136,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jCheckBox1.setText("Bañado en Chocolate");
+        jCheckBox1.setEnabled(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -388,6 +395,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
