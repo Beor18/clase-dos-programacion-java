@@ -5,8 +5,11 @@
  */
 package client;
 
+//import javax.swing.DefaultComboBoxModel;
+import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,7 +22,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
      */
     public PrimeraPantalla() {
         initComponents();
-        initComboBox();
+        fillLists();
     }
 
     /**
@@ -56,7 +59,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        confirmarCompra = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -142,7 +145,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Cantidad de Gustos"));
 
-        comboCantidadDeGustos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboCantidadDeGustos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciones un gusto", "1 gusto", "2 gustos" }));
         comboCantidadDeGustos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboCantidadDeGustosActionPerformed(evt);
@@ -180,11 +183,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Gustos Disponibles"));
 
-        listaGustosNecesarios.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        listaGustosNecesarios.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(listaGustosNecesarios);
 
         botonAgregar.setText("Agregar");
@@ -220,11 +219,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("Gustos Seleccionados")));
 
-        listaGustosComprar.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        listaGustosComprar.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(listaGustosComprar);
 
         botonQuitar.setText("Quitar");
@@ -245,7 +240,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addComponent(botonQuitar)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,7 +269,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(121, 121, 121)
                         .addComponent(jLabel3)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,7 +293,12 @@ public class PrimeraPantalla extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Confirmar!");
+        confirmarCompra.setText("Confirmar!");
+        confirmarCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmarCompraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -310,7 +310,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(confirmarCompra)
                 .addGap(38, 38, 38))
         );
         jPanel7Layout.setVerticalGroup(
@@ -320,7 +320,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton3)
-                        .addComponent(jButton4))
+                        .addComponent(confirmarCompra))
                     .addComponent(jLabel5))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -378,21 +378,36 @@ public class PrimeraPantalla extends javax.swing.JFrame {
         DefaultListModel<String> listModelNecesarios = new DefaultListModel<>();
         listaGustosNecesarios.setModel(listModelNecesarios);
         
+        listModelNecesarios.addElement("Limon");
+        listModelNecesarios.addElement("Chocolate");
+        listModelNecesarios.addElement("Frutilla");
+        listModelNecesarios.addElement("Coco");
+        
         DefaultListModel<String> listModelComprar = new DefaultListModel<>();
         listaGustosComprar.setModel(listModelComprar);
     }
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
-       
+          String ingredienteNecesario = listaGustosNecesarios.getSelectedValue();
+        
+        if (ingredienteNecesario == null){
+            JOptionPane.showMessageDialog(this, "Primero seleccione un ingrediente para agregar", "Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+            DefaultListModel<String>  modelNecesarios = (DefaultListModel<String>)listaGustosNecesarios.getModel();
+            DefaultListModel<String>  modelComprar = (DefaultListModel<String>)listaGustosComprar.getModel();
+
+            modelComprar.addElement(ingredienteNecesario);
+            modelNecesarios.removeElement(ingredienteNecesario);
+        }
     }//GEN-LAST:event_botonAgregarActionPerformed
 
     private void radioTipoVasitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioTipoVasitoActionPerformed
         disableBaniado();
-        fillComboCantidadGustos(2);
+        fillComboCantidadGustos(0);
     }//GEN-LAST:event_radioTipoVasitoActionPerformed
 
     private void radioTipoCucuruchoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioTipoCucuruchoActionPerformed
         enabledBaniado();
-        fillComboCantidadGustos(2);
+        fillComboCantidadGustos(1);
     }//GEN-LAST:event_radioTipoCucuruchoActionPerformed
 
     private void radioTipoMedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioTipoMedioActionPerformed
@@ -402,7 +417,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
 
     private void radioTipoKiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioTipoKiloActionPerformed
         disableBaniado();
-        fillComboCantidadGustos(4);
+        fillComboCantidadGustos(5);
     }//GEN-LAST:event_radioTipoKiloActionPerformed
 
     private void botonQuitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonQuitarActionPerformed
@@ -414,13 +429,28 @@ public class PrimeraPantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void comboCantidadDeGustosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCantidadDeGustosActionPerformed
-        
+      
+          
+         
     }//GEN-LAST:event_comboCantidadDeGustosActionPerformed
 
     private void radioTipoCuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioTipoCuartoActionPerformed
-       disableBaniado();
        fillComboCantidadGustos(2);
+       
     }//GEN-LAST:event_radioTipoCuartoActionPerformed
+
+    private void confirmarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarCompraActionPerformed
+        DefaultListModel<String>  modelComprar = (DefaultListModel<String>)listaGustosComprar.getModel();
+        DefaultListModel<String>  modelNecesarios = (DefaultListModel<String>)listaGustosNecesarios.getModel();
+        
+        if (modelComprar.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Disculpe pero debe seleccionar al menos un ingrediente a comprar para realizar el pedido", "Error", JOptionPane.ERROR_MESSAGE);
+        }else if (modelNecesarios.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Le enviaremos todos los ingredientes de la receta: " + modelComprar.toString(), "Información", JOptionPane.INFORMATION_MESSAGE);
+        } else {        
+            JOptionPane.showMessageDialog(this, "Usted compró: " + modelComprar.toString(), "Información", JOptionPane.INFORMATION_MESSAGE);
+        }    
+    }//GEN-LAST:event_confirmarCompraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -433,8 +463,8 @@ public class PrimeraPantalla extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox checkBaniadoChocolate;
     private javax.swing.JComboBox<String> comboCantidadDeGustos;
+    private javax.swing.JButton confirmarCompra;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -456,13 +486,13 @@ public class PrimeraPantalla extends javax.swing.JFrame {
     private javax.swing.JRadioButton radioTipoVasito;
     // End of variables declaration//GEN-END:variables
 
-     private void initComboBox() {
+     /*private void initComboBox() {
 
         DefaultComboBoxModel modelo = new DefaultComboBoxModel<>();
         modelo.addElement("Cantidad de gustos sin definir");
         
         comboCantidadDeGustos.setModel(modelo);
-    }
+    }*/
 
     private void disableBaniado() {
         checkBaniadoChocolate.setEnabled(false);
@@ -475,26 +505,11 @@ public class PrimeraPantalla extends javax.swing.JFrame {
 
     private void fillComboCantidadGustos(int cantidad) {
         comboCantidadDeGustos.removeAllItems();
-        
-        DefaultComboBoxModel modeloCucurucho = new DefaultComboBoxModel<>();
-        
-        if (cantidad == 2){
-            modeloCucurucho.addElement("1 gusto");
-            modeloCucurucho.addElement("2 gusto");
+        for (int i = 0; i <= cantidad; i++) {
+            comboCantidadDeGustos.addItem(cantidad + " gusto");
+            
         }
-        
-        if (cantidad == 3){
-            modeloCucurucho.addElement("1 gusto");
-            modeloCucurucho.addElement("2 gusto");
-            modeloCucurucho.addElement("3 gusto");
-        }
-        
-        if (cantidad == 4){
-            modeloCucurucho.addElement("1 gusto");
-            modeloCucurucho.addElement("2 gusto");
-            modeloCucurucho.addElement("3 gusto");
-            modeloCucurucho.addElement("4 gusto");
-        }
-        comboCantidadDeGustos.setModel(modeloCucurucho);
+       
     }
+        
 }
