@@ -22,7 +22,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
      */
     public PrimeraPantalla() {
         initComponents();
-        fillLists();
+        
     }
 
     /**
@@ -58,7 +58,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        cancelar = new javax.swing.JButton();
         confirmarCompra = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -145,7 +145,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Cantidad de Gustos"));
 
-        comboCantidadDeGustos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciones un gusto", "1 gusto", "2 gustos" }));
+        comboCantidadDeGustos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciones un gusto" }));
         comboCantidadDeGustos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboCantidadDeGustosActionPerformed(evt);
@@ -220,6 +220,15 @@ public class PrimeraPantalla extends javax.swing.JFrame {
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("Gustos Seleccionados")));
 
         listaGustosComprar.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listaGustosComprar.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+                listaGustosComprarAncestorRemoved(evt);
+            }
+        });
         jScrollPane1.setViewportView(listaGustosComprar);
 
         botonQuitar.setText("Quitar");
@@ -286,10 +295,10 @@ public class PrimeraPantalla extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Droid Sans", 1, 14)); // NOI18N
         jLabel5.setText("Total a Pagar: ");
 
-        jButton3.setText("Cancelar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        cancelar.setText("Cancelar");
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                cancelarActionPerformed(evt);
             }
         });
 
@@ -308,7 +317,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(cancelar)
                 .addGap(18, 18, 18)
                 .addComponent(confirmarCompra)
                 .addGap(38, 38, 38))
@@ -319,7 +328,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton3)
+                        .addComponent(cancelar)
                         .addComponent(confirmarCompra))
                     .addComponent(jLabel5))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -374,18 +383,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
- private void fillLists() {
-        DefaultListModel<String> listModelNecesarios = new DefaultListModel<>();
-        listaGustosNecesarios.setModel(listModelNecesarios);
-        
-        listModelNecesarios.addElement("Limon");
-        listModelNecesarios.addElement("Chocolate");
-        listModelNecesarios.addElement("Frutilla");
-        listModelNecesarios.addElement("Coco");
-        
-        DefaultListModel<String> listModelComprar = new DefaultListModel<>();
-        listaGustosComprar.setModel(listModelComprar);
-    }
+
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
           String ingredienteNecesario = listaGustosNecesarios.getSelectedValue();
         
@@ -394,7 +392,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
         }else{
             DefaultListModel<String>  modelNecesarios = (DefaultListModel<String>)listaGustosNecesarios.getModel();
             DefaultListModel<String>  modelComprar = (DefaultListModel<String>)listaGustosComprar.getModel();
-
+            
             modelComprar.addElement(ingredienteNecesario);
             modelNecesarios.removeElement(ingredienteNecesario);
         }
@@ -402,7 +400,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
 
     private void radioTipoVasitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioTipoVasitoActionPerformed
         disableBaniado();
-        fillComboCantidadGustos(0);
+        fillComboCantidadGustos(1);
     }//GEN-LAST:event_radioTipoVasitoActionPerformed
 
     private void radioTipoCucuruchoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioTipoCucuruchoActionPerformed
@@ -412,30 +410,51 @@ public class PrimeraPantalla extends javax.swing.JFrame {
 
     private void radioTipoMedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioTipoMedioActionPerformed
         disableBaniado();
-        fillComboCantidadGustos(3);
+        fillComboCantidadGustos(2);
     }//GEN-LAST:event_radioTipoMedioActionPerformed
 
     private void radioTipoKiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioTipoKiloActionPerformed
         disableBaniado();
-        fillComboCantidadGustos(5);
+        fillComboCantidadGustos(3);
     }//GEN-LAST:event_radioTipoKiloActionPerformed
 
     private void botonQuitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonQuitarActionPerformed
-        // TODO add your handling code here:
+        String ingredienteNecesario = listaGustosComprar.getSelectedValue();
+
+        if (ingredienteNecesario == null){
+                JOptionPane.showMessageDialog(this, "Primero seleccione un gusto para Quitar", "Error", JOptionPane.ERROR_MESSAGE);
+        }else {
+            DefaultListModel<String>  modelComprar = (DefaultListModel<String>)listaGustosComprar.getModel();
+            DefaultListModel<String>  modelNecesarios = (DefaultListModel<String>)listaGustosNecesarios.getModel();
+
+            modelNecesarios.addElement(ingredienteNecesario);
+            modelComprar.removeElement(ingredienteNecesario);
+        }
+     
     }//GEN-LAST:event_botonQuitarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        
+    }//GEN-LAST:event_cancelarActionPerformed
 
     private void comboCantidadDeGustosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCantidadDeGustosActionPerformed
-      
-          
+             
+        DefaultListModel<String> listModelNecesarios = new DefaultListModel<>();
+        listaGustosNecesarios.setModel(listModelNecesarios);
+        
+        
+        listModelNecesarios.addElement("Chocolate");
+        listModelNecesarios.addElement("Frutilla");
+        listModelNecesarios.addElement("Coco");
+        
+        DefaultListModel<String> listModelComprar = new DefaultListModel<>();
+        listaGustosComprar.setModel(listModelComprar);
          
     }//GEN-LAST:event_comboCantidadDeGustosActionPerformed
 
     private void radioTipoCuartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioTipoCuartoActionPerformed
-       fillComboCantidadGustos(2);
+
+       fillComboCantidadGustos(1);
        
     }//GEN-LAST:event_radioTipoCuartoActionPerformed
 
@@ -448,9 +467,13 @@ public class PrimeraPantalla extends javax.swing.JFrame {
         }else if (modelNecesarios.isEmpty()){
             JOptionPane.showMessageDialog(this, "Le enviaremos todos los ingredientes de la receta: " + modelComprar.toString(), "Información", JOptionPane.INFORMATION_MESSAGE);
         } else {        
-            JOptionPane.showMessageDialog(this, "Usted compró: " + modelComprar.toString(), "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Usted compró helado con los gustos: " + modelComprar.toString(), "Información", JOptionPane.INFORMATION_MESSAGE);
         }    
     }//GEN-LAST:event_confirmarCompraActionPerformed
+
+    private void listaGustosComprarAncestorRemoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_listaGustosComprarAncestorRemoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listaGustosComprarAncestorRemoved
 
     /**
      * @param args the command line arguments
@@ -461,10 +484,10 @@ public class PrimeraPantalla extends javax.swing.JFrame {
     private javax.swing.JButton botonAgregar;
     private javax.swing.JButton botonQuitar;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton cancelar;
     private javax.swing.JCheckBox checkBaniadoChocolate;
     private javax.swing.JComboBox<String> comboCantidadDeGustos;
     private javax.swing.JButton confirmarCompra;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
