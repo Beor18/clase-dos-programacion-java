@@ -146,6 +146,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Cantidad de Gustos"));
 
         comboCantidadDeGustos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciones un gusto" }));
+        comboCantidadDeGustos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         comboCantidadDeGustos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboCantidadDeGustosActionPerformed(evt);
@@ -221,12 +222,12 @@ public class PrimeraPantalla extends javax.swing.JFrame {
 
         listaGustosComprar.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         listaGustosComprar.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
                 listaGustosComprarAncestorRemoved(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
         });
         jScrollPane1.setViewportView(listaGustosComprar);
@@ -438,7 +439,7 @@ public class PrimeraPantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void comboCantidadDeGustosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCantidadDeGustosActionPerformed
-             
+        
         DefaultListModel<String> listModelNecesarios = new DefaultListModel<>();
         listaGustosNecesarios.setModel(listModelNecesarios);
         
@@ -446,6 +447,8 @@ public class PrimeraPantalla extends javax.swing.JFrame {
         listModelNecesarios.addElement("Chocolate");
         listModelNecesarios.addElement("Frutilla");
         listModelNecesarios.addElement("Coco");
+        listModelNecesarios.addElement("Vainilla");
+        listModelNecesarios.addElement("Dulce de Leche");
         
         DefaultListModel<String> listModelComprar = new DefaultListModel<>();
         listaGustosComprar.setModel(listModelComprar);
